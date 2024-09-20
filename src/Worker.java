@@ -3,6 +3,7 @@ public class Worker {
     private int baseSalary;
     private int complement;
     private int totalSalary;
+    private static int totalCompanySalary;
 
     // Default constructor
     public Worker() {
@@ -10,6 +11,7 @@ public class Worker {
         this.baseSalary = 0;
         this.complement = 0;
         this.totalSalary = calculateTotalSalary();
+        totalCompanySalary += totalSalary;
     }
 
     // Parameterized constructor
@@ -18,6 +20,7 @@ public class Worker {
         this.baseSalary = baseSalary;
         this.complement = complement;
         this.totalSalary = calculateTotalSalary();
+        totalCompanySalary += totalSalary;
     }
 
     // Calculate the total salary
@@ -48,7 +51,10 @@ public class Worker {
 
     public void setBaseSalary(int baseSalary) {
         this.baseSalary = baseSalary;
-        this.totalSalary = calculateTotalSalary(); // Recalculate after change
+        totalCompanySalary -= totalSalary;
+        // Recalculate after change
+        this.totalSalary = calculateTotalSalary();
+        totalCompanySalary += totalSalary;
     }
 
     public int getComplement() {
@@ -61,6 +67,10 @@ public class Worker {
     }
 
     public int getTotalSalary() {
-        return totalSalary;
+        return this.totalSalary;
+    }
+
+    public int getTotalCompanySalary() {
+        return totalCompanySalary;
     }
 }
