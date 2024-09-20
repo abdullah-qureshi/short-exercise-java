@@ -63,14 +63,17 @@ public class Worker {
 
     public void setComplement(int complement) {
         this.complement = complement;
-        this.totalSalary = calculateTotalSalary(); // Recalculate after change
+        totalCompanySalary -= totalSalary;
+        // Recalculate after change
+        this.totalSalary = calculateTotalSalary();
+        totalCompanySalary += totalSalary;
     }
 
     public int getTotalSalary() {
         return this.totalSalary;
     }
 
-    public int getTotalCompanySalary() {
+    public static int getTotalCompanySalary() {
         return totalCompanySalary;
     }
 }

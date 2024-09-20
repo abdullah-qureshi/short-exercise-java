@@ -11,6 +11,9 @@ public class Main {
             myWorkers[i] = new Worker();
             myWorkers[i].getDetails();
         }
+        myWorkers[0] = new Worker("Abdullah", 40000,5000);
+        int salary = Worker.getTotalCompanySalary();
+        System.out.println("Total workers salary = " + salary);
     }
 }
 
